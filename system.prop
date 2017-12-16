@@ -2,8 +2,10 @@
 #  System prop for GM 5 Plus by Quicksilver
 #
 # Audio
-audio.deep_buffer.media=true
+af.fast_track_multiplier=1
+audio_hal.period_size=192
 audio.dolby.ds2.enabled=true
+audio.deep_buffer.media=true
 audio.offload.buffer.size.kb=64
 audio.offload.disable=1
 audio.offload.gapless.enabled=true
@@ -15,15 +17,6 @@ audio.offload.track.enable=false
 audio.offload.video=false
 audio.playback.mch.downsample=true
 audio.safx.pbe.enabled=true
-ro.qc.sdk.audio.fluencetype=none
-ro.qc.sdk.audio.ssr=false
-tunnel.audio.encode=false
-vidc.enc.narrow.searchrange=1
-voice.conc.fallbackpath=deep-buffer
-voice.playback.conc.disabled=true
-voice.record.conc.disabled=false
-voice.voip.conc.disabled=true
-use.voice.path.for.pcm.voip=true
 
 persist.audio.calfile0=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_Bluetooth_cal.acdb
 persist.audio.calfile1=/etc/acdbdata/shamrock/msm8952-l9300-snd-card/shamrock_General_cal.acdb
@@ -39,8 +32,15 @@ persist.audio.fluence.speaker=true
 persist.audio.fluence.spk.mono=true
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=true
-persist.sys.button_jack_profile=volume
-persist.sys.button_jack_switch=0
+
+ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.ssr=false
+tunnel.audio.encode=false
+use.voice.path.for.pcm.voip=true
+voice.conc.fallbackpath=deep-buffer
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=false
+voice.voip.conc.disabled=true
 
 # Activity Manager
 ro.config.max_starting_bg=8
@@ -115,10 +115,8 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 
-# OEM props for device info
-import /oem/oem.prop ro.product.model
+# OEM
 import /oem/oem.prop persist.radio.multisim.config
-ro.product.model.platform=1
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
@@ -135,6 +133,9 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.default_cdma_sub=0
 ro.telephony.default_network=22,22
 telephony.lteOnCdmaDevice=1
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
 
 # TCP
 net.tcp.2g_init_rwnd=10
