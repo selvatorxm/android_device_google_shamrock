@@ -1,4 +1,6 @@
 Device Tree for GM 5 Plus/d (shamrock)
+
+![photo](https://onelabs.net/img/logo@2x.png)
 ===========================================
 
 The GM 5 Plus/d (codenamed _"shamrock"_) is a mid-range smartphone from General Mobile.
