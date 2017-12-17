@@ -1,4 +1,7 @@
 Device Tree for GM 5 Plus/d (shamrock)
+
+![photo](https://onelabs.net/img/logo@2x.png)
+
 ===========================================
 
 The GM 5 Plus/d (codenamed _"shamrock"_) is a mid-range smartphone from General Mobile.
@@ -19,3 +22,5 @@ Rear Camera  | 13 MP, autofocus, dual LED flash
 Front Camera  | 13 MP, autofocus, LED flash
 
 Copyright 2017 - The LineageOS Project.
+
+<img width="460" height="460" src="https://i.hizliresim.com/d7mbbQ.png">

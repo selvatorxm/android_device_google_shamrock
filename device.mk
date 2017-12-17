@@ -118,10 +118,15 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    gralloc.msm8952 \
     copybit.msm8952 \
+    gralloc.msm8952 \
     hwcomposer.msm8952 \
-    memtrack.msm8952
+    memtrack.msm8952 \
+    liboverlay
+	
+# Panel
+PRODUCT_PACKAGES += \
+    pp_calib_data_goworld_1080p_video_mode_dsi_panel.xml
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -135,10 +140,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps/izat.conf:system/etc/izat.conf \
     $(LOCAL_PATH)/gps/lowi.conf:system/etc/lowi.conf \
-
-# IRSC
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 	
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -206,6 +207,12 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
     libxml2
+	
+# Radio Configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/radio/data/dsi_config.xml:system/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/radio/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+    $(LOCAL_PATH)/radio/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
@@ -224,6 +231,7 @@ PRODUCT_COPY_FILES += \
 
 # WCNSS
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/wifi/sec_config:system/etc/sec_config \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/wifi/WCNSS_wlan_dictionary.dat:system/etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
