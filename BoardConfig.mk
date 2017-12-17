@@ -133,9 +133,6 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-ea
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
 # Media
 TARGET_HAVE_SIGNED_VENUS_FW := true
 
