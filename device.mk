@@ -189,18 +189,23 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
 
-# Ramdisk
+# Init Scripts First
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.target.rc
+
+# Init Scripts Second
+PRODUCT_PACKAGES += \
     init.qcom.rc \
-    init.qcom.sh \
-    init.qcom.usb.rc \
+    init.qcom.power.rc \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc \
-    init.class_main.sh \
-    init.qcom.bms.sh \
-    init.qcom.bt.sh \
-    init.qcom.class_core.sh \
-    init.qcom.post_boot.sh
+    init.qcom.usb.rc
+
+ifeq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PACKAGES += \
+    init.qcom.ssr.rc
+endif
 
 # RIL
 PRODUCT_PACKAGES += \
