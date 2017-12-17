@@ -61,11 +61,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level-0.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
-<<<<<<< HEAD
-    $(LOCAL_PATH)/configs/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
-=======
-    $(LOCAL_PATH)/gps/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
->>>>>>> 1ee077a262cbf95a1583382287ee1a98bdc2431c
+    $(LOCAL_PATH)/gps/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xm
 
 # Audio
 PRODUCT_PACKAGES += \
