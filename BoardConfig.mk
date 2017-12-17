@@ -97,6 +97,12 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
+<<<<<<< HEAD
+# Filesystem
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
+
+=======
+>>>>>>> 1ee077a262cbf95a1583382287ee1a98bdc2431c
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -130,9 +136,18 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-ea
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
+<<<<<<< HEAD
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Media
 TARGET_HAVE_SIGNED_VENUS_FW := true
 
+=======
+# Media
+TARGET_HAVE_SIGNED_VENUS_FW := true
+
+>>>>>>> 1ee077a262cbf95a1583382287ee1a98bdc2431c
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
@@ -152,7 +167,14 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 28538268672
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
+<<<<<<< HEAD
+
+# Power
 TARGET_POWERHAL_VARIANT := qcom
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(PLATFORM_PATH)/power/power_ext.c
+=======
+TARGET_POWERHAL_VARIANT := qcom
+>>>>>>> 1ee077a262cbf95a1583382287ee1a98bdc2431c
 
 # Recovery
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
