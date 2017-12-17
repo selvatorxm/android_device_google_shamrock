@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2016 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +16,12 @@
 #
 
 set -e
-export DEVICE=athene
-export VENDOR=motorola
 
-INITIAL_COPYRIGHT_YEAR=2016
+export INITIAL_COPYRIGHT_YEAR=2016
+
+# Required!
+DEVICE=shamrock
+VENDOR=google
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -35,14 +36,14 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
-# Reinitialize the helper for device
+# Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 # Copyright headers and guards
 write_headers
 
-# The standard device blobs
-write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt
+# The standard blobs
+write_makefiles "$MY_DIR"/proprietary-files.txt
 
 # We are done!
 write_footers

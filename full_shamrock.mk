@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2015 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,3 +23,5 @@ $(call inherit-product, device/google/shamrock/device.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := shamrock
 PRODUCT_NAME := full_shamrock
+PRODUCT_BRAND := Google
+PRODUCT_MANUFACTURER := Google

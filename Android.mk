@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,17 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(filter shamrock, $(TARGET_DEVICE)),)
+ifneq ($(filter shamrock,$(TARGET_DEVICE)),)
 
 LOCAL_PATH := $(call my-dir)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
 ADSP_IMAGES := \
-    adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 \
-    adsp.b06 adsp.b07 adsp.b08 adsp.b09 adsp.b10 adsp.b11 \
-    adsp.b12 adsp.b13 adsp.b14 adsp.b15 adsp.mbn adsp.mdt
-	
+    adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 \
+	adsp.b07 adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.b13 \
+	adsp.mbn adsp.mdt
+    
 ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(ADSP_IMAGES)))
 $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
@@ -46,22 +47,50 @@ $(CMN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CMN_SYMLINKS)
 
-FIRMWARE_ISDB_IMAGES := \
-    isdbtmm.b00 isdbtmm.b01 isdbtmm.b02 isdbtmm.b03 isdbtmm.mdt
+CPE_IMAGES := \
+    cpe.b02 cpe.b04 cpe.b05 cpe.b06 cpe.b08 cpe.b10 cpe.b11 cpe.b12 cpe.b14 \
+    cpe.b16 cpe.b18 cpe.b20 cpe.b21 cpe.mbn cpe.mdt \
+    cpe_9335.b08 cpe_9335.b09 cpe_9335.b11 cpe_9335.b14 cpe_9335.b16 cpe_9335.b18 \
+    cpe_9335.b19 cpe_9335.b20 cpe_9335.b22 cpe_9335.b24 cpe_9335.b26 cpe_9335.b28 \
+    cpe_9335.b29 cpe_9335.mbn cpe_9335.mdt
 
-FIRMWARE_ISDB_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_ISDB_IMAGES)))
-$(FIRMWARE_ISDB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "ISDB Firmware link: $@"
+CPE_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CPE_IMAGES)))
+$(CPE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "CPE firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_ISDB_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(CPE_SYMLINKS)
+
+FINGERPR_IMAGES := \
+    fingerpr.b00 fingerpr.b01 fingerpr.b02 fingerpr.b03 fingerpr.mdt
+
+FINGERPR_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FINGERPR_IMAGES)))
+$(FINGERPR_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "FINGERPR firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(FINGERPR_SYMLINKS)
+
+ISDB_IMAGES := \
+    isdbtmm.b00 isdbtmm.b01 isdbtmm.b02 isdbtmm.b03 isdbtmm.mdt
+
+ISDB_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(ISDB_IMAGES)))
+$(ISDB_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "ISDB firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(ISDB_SYMLINKS)
 
 FIRMWARE_KEYMASTER_IMAGES := \
-    keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt
+    keymaste.b00 keymaste.b01 keymaste.b02 keymaste.b03 keymaste.mdt
 
-FIRMWARE_KEYMASTER_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/keymaster/,$(notdir $(FIRMWARE_KEYMASTER_IMAGES)))
+FIRMWARE_KEYMASTER_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_KEYMASTER_IMAGES)))
 $(FIRMWARE_KEYMASTER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Keymaster Firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -70,82 +99,93 @@ $(FIRMWARE_KEYMASTER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_KEYMASTER_SYMLINKS)
 
-FIRMWARE_MBA_IMAGES := \
+MBA_IMAGES := \
     mba.mbn
 
-FIRMWARE_MBA_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MBA_IMAGES)))
-$(FIRMWARE_MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MBA Firmware link: $@"
+MBA_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MBA_IMAGES)))
+$(MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MBA firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MBA_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(MBA_SYMLINKS)
 
-FIRMWARE_MDTP_IMAGES := \
+MDTP_IMAGES := \
     mdtp.b00 mdtp.b01 mdtp.b02 mdtp.b03 mdtp.mdt
 
-FIRMWARE_MDTP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MDTP_IMAGES)))
-$(FIRMWARE_MDTP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "MDTP Firmware link: $@"
+MDTP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MDTP_IMAGES)))
+$(MDTP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "MDTP firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MDTP_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(MDTP_SYMLINKS)
 
-FIRMWARE_MODEM_IMAGES := \
+MODEM_IMAGES := \
     modem.b00 modem.b01 modem.b02 modem.b04 modem.b05 modem.b06 \
     modem.b07 modem.b08 modem.b09 modem.b10 modem.b11 modem.b12 \
     modem.b13 modem.b16 modem.b17 modem.b18 modem.b19 modem.b20 \
     modem.mdt
 
-FIRMWARE_MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MODEM_IMAGES)))
-$(FIRMWARE_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Modem Firmware link: $@"
+MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(MODEM_IMAGES)))
+$(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Modem firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MODEM_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
-PROV_IMAGES := \
-    prov.b00 prov.b01 prov.b02 prov.b03 prov.mdt
+PLAYREADY_IMAGES := \
+    playread.b00 playread.b01 playread.b02 playread.b03 playread.mdt
 
-PROV_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PROV_IMAGES)))
-$(PROV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+PLAYREADY_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PLAYREADY_IMAGES)))
+$(PLAYREADY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Playready firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(PROV_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(PLAYREADY_SYMLINKS)
 
-QDSP_IMAGES := \
-    qdsp6m.qdb
+QDSP6M_IMAGES := \
+    qdsp6m.qdp
 
-QDSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(QDSP_IMAGES)))
-$(QDSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Playready firmware link: $@"
+QDSP6M_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(QDSP6M_IMAGES)))
+$(QDSP6M_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "QDSP6M firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(QDSP_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(QDSP6M_SYMLINKS)
 
-FIRMWARE_WCNSS_IMAGES := \
-    wcnss.b00 wcnss.b01 wcnss.b02 wcnss.b04 \
-    wcnss.b06 wcnss.b09 wcnss.b10 wcnss.b11 \
-    wcnss.b12 wcnss.mdt
+TQS_IMAGES := \
+    tqs.b00 tqs.b01 tqs.b02 tqs.b03 tqs.mdt
 
-FIRMWARE_WCNSS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_WCNSS_IMAGES)))
-$(FIRMWARE_WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "WCNSS Firmware link: $@"
+TQS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(TQS_IMAGES)))
+$(TQS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "TQS firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_WCNSS_SYMLINKS)
+ALL_DEFAULT_INSTALLED_MODULES += $(TQS_SYMLINKS)
+
+WCNSS_IMAGES := \
+    wcnss.b00 wcnss.b01 wcnss.b02 wcnss.b04 wcnss.b06 \
+    wcnss.b09 wcnss.b10 wcnss.b11 wcnss.b12 wcnss.mdt
+
+WCNSS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(WCNSS_IMAGES)))
+$(WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "WCNSS firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_SYMLINKS)
 
 FIRMWARE_WIDEVINE_IMAGES := \
     widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt
@@ -158,7 +198,5 @@ $(FIRMWARE_WIDEVINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_WIDEVINE_SYMLINKS)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif

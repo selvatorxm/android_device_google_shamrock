@@ -1,5 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+$(call inherit-product, device/google/shamrock/full_shamrock.mk)
+
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-$(call inherit-product, device/google/shamrock/full_shamrock.mk)
+# Must define platform variant before including any common things
+TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
-# Boot animation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_BOOTANIMATION_HALF_RES := true
-
-## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := shamrock
 PRODUCT_NAME := lineage_shamrock
-PRODUCT_BRAND := Google
-PRODUCT_MANUFACTURER := Google
-PRODUCT_RELEASE_NAME := shamrock
+BOARD_VENDOR := google
+PRODUCT_DEVICE := shamrock
+
 PRODUCT_GMS_CLIENTID_BASE := android-google
+
+PRODUCT_MANUFACTURER := Google
+
+PRODUCT_BRAND := Google
 TARGET_VENDOR := google
 TARGET_VENDOR_PRODUCT_NAME := Shamrock
 TARGET_VENDOR_DEVICE_NAME := shamrock
