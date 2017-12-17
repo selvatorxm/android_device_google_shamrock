@@ -121,12 +121,12 @@ PRODUCT_PACKAGES += \
     copybit.msm8952 \
     gralloc.msm8952 \
     hwcomposer.msm8952 \
-    memtrack.msm8952 \
-    liboverlay
+    libtinyxml \
+    memtrack.msm8952
 	
-# Panel
+# Doze
 PRODUCT_PACKAGES += \
-    pp_calib_data_goworld_1080p_video_mode_dsi_panel.xml
+   OneLabsDoze
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -149,10 +149,6 @@ PRODUCT_COPY_FILES += \
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8952
-
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm8952
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
@@ -201,6 +197,10 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     init.qcom.class_core.sh \
     init.qcom.post_boot.sh
+	
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8952
 
 # RIL
 PRODUCT_PACKAGES += \

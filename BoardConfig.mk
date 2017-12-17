@@ -39,17 +39,23 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
 BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_HEADER_ARCH := arm
+ENABLE_CPUSETS := true
 TARGET_KERNEL_SOURCE := kernel/google/shamrock
 TARGET_KERNEL_CONFIG := lineageos_shamrock_defconfig
+TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 
@@ -97,19 +103,15 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
 # Display
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-TARGET_USES_C2D_COMPOSITION := true
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
-TARGET_USES_ION := true
-TARGET_USES_OVERLAY := true
-USE_OPENGL_RENDERER := true
-VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
-
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
-
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+TARGET_CONTINUOUS_SPLASH_ENABLED := true
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+USE_OPENGL_RENDERER := true
 
 # Dexpreopt
 WITH_DEXPREOPT := true
@@ -173,15 +175,13 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
 # RIL
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # SDClang
