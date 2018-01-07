@@ -102,7 +102,7 @@ TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/fs_config/filesystem_config.h
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/fs_config/android_filesystem_config.h
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
@@ -166,7 +166,7 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # Recovery
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_cm
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # RIL
 TARGET_RIL_VARIANT := caf
