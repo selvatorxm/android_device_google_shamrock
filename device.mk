@@ -273,11 +273,10 @@ PRODUCT_PACKAGES += \
 # Wlan
 PRODUCT_PACKAGES += \
 	android.hardware.wifi@1.0-service \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
     wcnss_service \
     hostapd \
 	wificond \
+	wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
 
