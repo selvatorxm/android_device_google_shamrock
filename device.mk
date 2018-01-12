@@ -230,6 +230,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+	android.hardware.sensors@1.0-impl \
     sensors.msm8952
 
 # Sensor Configurations
