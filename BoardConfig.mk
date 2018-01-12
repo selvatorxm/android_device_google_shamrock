@@ -80,6 +80,9 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
+# CNE | DPM
+BOARD_USES_QCNE := true
+
 # Cryption
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_HW_DISK_ENCRYPTION := true
@@ -104,6 +107,7 @@ USE_OPENGL_RENDERER := true
 
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/fs_config/android_filesystem_config.h
+TARGET_FS_CONFIG_GEN := device/google/shamrock/config.fs
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
