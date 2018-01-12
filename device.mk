@@ -228,10 +228,6 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
 PRODUCT_PACKAGES += \
     power.msm8952
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_cm
-
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
