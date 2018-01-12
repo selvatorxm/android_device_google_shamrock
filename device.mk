@@ -145,6 +145,10 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     memtrack.msm8952
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+	
 # Doze
 PRODUCT_PACKAGES += \
    OneLabsDoze
