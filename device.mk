@@ -167,6 +167,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/lowi.conf:system/etc/lowi.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+	
 # Jelly package
 PRODUCT_PACKAGES += \
     Jelly
