@@ -229,6 +229,7 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
 
 # Power HAL
 PRODUCT_PACKAGES += \
+	android.hardware.power@1.0-impl \
     power.msm8952
 
 # Radio
