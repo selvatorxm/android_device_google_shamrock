@@ -226,6 +226,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml
 
+# Netutils
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0	
+
 # OEM Blacklist
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.model
