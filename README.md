@@ -19,4 +19,4 @@ Front Camera  | 13 MP, autofocus, LED flash
 
 Copyright 2017 - The LineageOS Project.
 
-<img width="460" height="460" src="https://assets.generalmobile.com/images/gm5plus/galeri/5.jpg">
+<img width="460" height="460" src="https://image.ibb.co/eRpzrw/gm.jpg">
