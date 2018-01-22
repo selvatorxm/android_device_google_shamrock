@@ -87,9 +87,9 @@ BOARD_USES_QCNE := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Cyanogen Hardware
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
-BOARD_USES_CYANOGEN_HARDWARE := true
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
+BOARD_USES_LINEAGE_HARDWARE := true
 
 # Dexpreopt
 WITH_DEXPREOPT := true
