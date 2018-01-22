@@ -14,13 +14,13 @@
 
 $(call inherit-product, device/google/shamrock/full_shamrock.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common AICP stuff.
+$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
-PRODUCT_NAME := lineage_shamrock
+PRODUCT_NAME := aicp_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
 
@@ -32,3 +32,7 @@ PRODUCT_BRAND := Google
 TARGET_VENDOR := google
 TARGET_VENDOR_PRODUCT_NAME := Shamrock
 TARGET_VENDOR_DEVICE_NAME := shamrock
+
+# AICP Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="Mehmet KÖKLÜ (croatan)"
