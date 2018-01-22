@@ -19,4 +19,4 @@ Front Camera  | 13 MP, autofocus, LED flash
 
 Copyright 2017 - The LineageOS Project.
 
-<img width="460" height="460" src="https://image.ibb.co/eRpzrw/gm.jpg">
+![SHAMROCK](http://i.hizliresim.com/nEL160.jpg "SHAMROCK")
