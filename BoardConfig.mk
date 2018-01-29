@@ -179,8 +179,8 @@ TARGET_RIL_VARIANT := caf
 USE_SENSOR_MULTI_HAL := true
 
 # Sepolicy
-# BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
-# include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+include device/qcom/sepolicy/sepolicy.mk
 
 # Wlan
 BOARD_HAS_QCOM_WLAN := true
